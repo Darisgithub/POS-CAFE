@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  nama_produk String   @db.VarChar(255)
+  kategori    Category
+  harga       Decimal  @db.Decimal(10, 2)
+  stok        Int      @default(0)
+  deskripsi   String?  @db.Text
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  transactionItems TransactionItem[]
+
+  @@map("products")
+}
+
+model Transaction {
+  id                Int             @id @default(autoincrement())
+  total_harga       Decimal         @db.Decimal(10, 2)
+  metode_pembayaran PaymentMethod
+  created_at        DateTime        @default(now())
+  
+  items             TransactionItem[]
+
+  @@map("transactions")
+}
+
+model TransactionItem {
+  id             Int         @id @default(autoincrement())
+  transaction_id Int
+  product_id     Int
+  qty            Int
+  subtotal       Decimal     @db.Decimal(10, 2)
+  
+  transaction    Transaction @relation(fields: [transaction_id], references: [id], onDelete: Cascade)
+  product        Product     @relation(fields: [product_id], references: [id])
+
+  @@map("transaction_items")
+}
+
+enum Category {
+  makanan_berat
+  makanan_ringan
+  minuman
+}
+
+enum PaymentMethod {
+  cash
+  qris
+  debit
+}

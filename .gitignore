@@ -1,0 +1,69 @@
+# ===========================
+#  ENV & KONFIGURASI SENSITIF
+# ===========================
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.crt
+*.cert
+
+# Untuk Prisma
+/prisma/*.db
+prisma/.env
+
+# ===========================
+#  LOG & DEBUG FILES
+# ===========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===========================
+#  NODE & BUILD ARTIFACT
+# ===========================
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.temp/
+
+# ===========================
+#  SYSTEM FILES
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+#  IDE / EDITOR
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===========================
+#  DATABASE FILES
+# ===========================
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# ===========================
+#  GENERATED FILES
+# ===========================
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# ===========================
+#  TEST OUTPUT
+# ===========================
+/test-output/
+.jest/
