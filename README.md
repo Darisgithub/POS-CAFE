@@ -36,7 +36,7 @@ Backend API untuk sistem Point of Sale (POS) Cafe dengan fitur autentikasi dan o
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone <your-repo>
+git clone https://github.com/Darisgithub/POS-CAFE.git
 cd sistem-pos
 npm install
 ```
@@ -48,10 +48,10 @@ PORT=3000
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=
-DB_NAME=cafe_pos_db
+DB_NAME=your-db-name
 
 JWT_SECRET=your-super-secret-jwt-key-change-this
-JWT_EXPIRES_IN=24h
+JWT_EXPIRES_IN=your-jwt-expires-time. example: 24h
 ```
 
 ### 3. Start MySQL Server
